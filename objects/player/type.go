@@ -9,3 +9,7 @@ type Player struct {
 	points               int
 	deaths               int
 }
+
+func ping() {
+    return
+}
