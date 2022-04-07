@@ -1,6 +1,7 @@
 package player
 
 type Player struct {
+	playerID             int
 	positionX, positionY float64
 	velocityX, velocityY float64
 	rotationAngle        float64
