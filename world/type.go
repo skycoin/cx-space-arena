@@ -1,9 +1,13 @@
 package world
 
-import "github.com/skycoin/cx-space-arena/objects"
+import (
+	"github.com/skycoin/cx-space-arena/objects/asteroid"
+	"github.com/skycoin/cx-space-arena/objects/bullet"
+	"github.com/skycoin/cx-space-arena/objects/player"
+)
 
 type World struct {
-	Players   []objects.Player
-	Asteroids []objects.Asteroid
-	Bullets   []objects.Bullet
+	Asteroids []asteroid.Asteroid
+	Bullets   []bullet.Bullet
+	Players   []player.Player
 }

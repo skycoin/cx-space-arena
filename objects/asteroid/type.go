@@ -1,4 +1,4 @@
-package objects
+package asteroid
 
 type Asteroid struct {
 	positionX, positionY float64

@@ -1,4 +1,4 @@
-package objects
+package player
 
 type Player struct {
 	positionX, positionY float64

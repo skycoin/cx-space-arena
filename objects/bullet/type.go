@@ -1,4 +1,4 @@
-package objects
+package bullet
 
 type Bullet struct {
 	positionX, positionY float64
