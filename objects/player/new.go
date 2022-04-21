@@ -2,12 +2,12 @@ package player
 
 func NewPlayer(ID int) *Player {
 	return &Player{
-		playerID:  ID,
-		positionX: 0, positionY: 0,
-		velocityX: 0, velocityY: 0,
-		rotationAngle: 0,
-		health:        100,
-		points:        0,
-		deaths:        0,
+		PlayerID:  ID,
+		PositionX: 0, PositionY: 0,
+		Velocity: 0,
+		Rotation: 0,
+		Health:   100,
+		Points:   0,
+		Deaths:   0,
 	}
 }
