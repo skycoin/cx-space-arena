@@ -10,6 +10,10 @@ type Player struct {
 	deaths               int
 }
 
-func ping() {
-    return
+func (p *Player) GetID() int {
+	return p.playerID
+}
+
+func (p *Player) IsAlive() bool {
+	return (p.health > 0)
 }
