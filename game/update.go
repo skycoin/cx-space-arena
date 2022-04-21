@@ -1,48 +1,53 @@
 package game
 
 import (
-	"log"
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
+// Update function, called 60 times each second
 func (g *Game) Update() error {
-	log.Print(g.World.Players[0].Rotation)
-	if g.World.Players[0].Velocity < 0 {
-		g.World.Players[0].Velocity += 1
+	pl1 := g.World.Players[0]
+
+	// Constant force against the ship
+	if pl1.Velocity < 0 {
+		pl1.Velocity += 5
 	}
-	if g.World.Players[0].Velocity > 0 {
-		g.World.Players[0].Velocity -= 1
+	if pl1.Velocity > 0 {
+		pl1.Velocity -= 5
 	}
 
+	// Velocity increases and decreases the longer the button is held down
 	if ebiten.IsKeyPressed(ebiten.KeyUp) {
-		if g.World.Players[0].Velocity < 7 {
-			g.World.Players[0].Velocity += 2
+		if pl1.Velocity < 70 {
+			pl1.Velocity += 15
 		}
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyDown) {
-		if g.World.Players[0].Velocity > -5 {
-			g.World.Players[0].Velocity -= 2
+		if pl1.Velocity > -50 {
+			pl1.Velocity -= 15
 		}
 	}
 
+	// Rotation changes at a constant rate
 	if ebiten.IsKeyPressed(ebiten.KeyLeft) {
-		if g.World.Players[0].Rotation > 0 {
-			g.World.Players[0].Rotation -= 0.01
+		if pl1.Rotation > 0 {
+			pl1.Rotation -= 5
 		} else {
-			g.World.Players[0].Rotation = 0.99
+			pl1.Rotation = 355
 		}
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyRight) {
-		if g.World.Players[0].Rotation < 1.0 {
-			g.World.Players[0].Rotation += 0.01
+		if pl1.Rotation < 360 {
+			pl1.Rotation += 5
 		} else {
-			g.World.Players[0].Rotation = 0.01
+			pl1.Rotation = 5
 		}
 	}
-	g.World.Players[0].Rotation = math.Round(g.World.Players[0].Rotation*100) / 100
-	g.World.Players[0].PositionX += math.Cos(g.World.Players[0].Rotation*360*(math.Pi/180)) * float64(g.World.Players[0].Velocity)
-	g.World.Players[0].PositionY += math.Sin(g.World.Players[0].Rotation*360*(math.Pi/180)) * float64(g.World.Players[0].Velocity)
+
+	// Use sine and cosine functions to get X and Y positions based on rotation and velocity
+	pl1.PositionX += math.Cos(float64(pl1.Rotation)*(math.Pi/180)) * float64(pl1.Velocity) / 10
+	pl1.PositionY += math.Sin(float64(pl1.Rotation)*(math.Pi/180)) * float64(pl1.Velocity) / 10
 	return nil
 }

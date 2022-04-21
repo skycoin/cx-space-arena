@@ -1,5 +1,6 @@
 package player
 
+// Player contructor
 func NewPlayer(ID int) *Player {
 	return &Player{
 		PlayerID:  ID,

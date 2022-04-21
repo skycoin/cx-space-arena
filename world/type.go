@@ -15,7 +15,7 @@ type World struct {
 	PlayerCount int
 }
 
-// World constructor function
+// World constructor
 func NewWorld() *World {
 	world := &World{
 		Players:     [5]*player.Player{nil, nil, nil, nil, nil},
