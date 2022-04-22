@@ -1,32 +1,4 @@
-# cx-space-arena 
-
-## Fork details
-The 2D library used is [Ebiten](https://ebiten.org/), which has the following dependencies:
-
-### Dependencies
-
-Debian / Ubuntu
-```
-sudo apt install libc6-dev libglu1-mesa-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config
-```
-Fedora
-```
-sudo dnf install mesa-libGLU-devel mesa-libGLES-devel libXrandr-devel libXcursor-devel libXinerama-devel libXi-devel libXxf86vm-devel alsa-lib-devel pkg-config
-```
-Solus
-```
-sudo eopkg install libglu-devel libx11-devel libxrandr-devel libxinerama-devel libxcursor-devel libxi-devel libxxf86vm-devel alsa-lib-devel pkg-config
-```
-Arch
-```
-sudo pacman -S mesa libxrandr libxcursor libxinerama libxi pkg-config
-```
-Alpine
-```
-sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf
-```
-
-
+# cx-space-arena
 ## Summary of the Project
 Space Arena consists a simulation environment where an agent is commanding a space ship within one given space structured on an Agent-Based Model. The commands the players are allowed to operate are: 
  * Move forward with the up arrow 
@@ -47,4 +19,3 @@ Each player ship will have a struct with different points such as data such as p
 The sonar ping function will detect asteroids within their surroundings considering how far is the range of the ping for example 4 cm in diameter, then they can only see incoming asteroids within that diameter of the sonar ping. 
 
 The agents will accumulate points depending on how many asteroids they destroy, each asteroid destroyed will initially count 15 points.
-
