@@ -70,5 +70,19 @@ func (g *Game) Update() error {
 	pl1.PositionX += math.Cos(float64(pl1.Rotation)*(math.Pi/180)) * float64(pl1.Velocity) / 10
 	pl1.PositionY += math.Sin(float64(pl1.Rotation)*(math.Pi/180)) * float64(pl1.Velocity) / 10
 
+	w, h := ebiten.WindowSize()
+	if pl1.PositionX < 0 {
+		pl1.PositionX = 0
+	}
+	if pl1.PositionX > float64(w) {
+		pl1.PositionX = float64(w)
+	}
+	if pl1.PositionY < 0 {
+		pl1.PositionY = 0
+	}
+	if pl1.PositionY > float64(h) {
+		pl1.PositionY = float64(h)
+	}
+
 	return nil
 }
