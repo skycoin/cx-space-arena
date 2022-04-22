@@ -1,9 +1,9 @@
 # cx-space-arena 
 
-## Fork details
-The 2D library used is [Ebiten](https://ebiten.org/), which has the following dependencies:
+## Dependencies
+You will need the latest version of Golang, instructions for installation are listed [here](https://go.dev/doc/install)
 
-### Dependencies
+The 2D library used is [Ebiten](https://ebiten.org/), which has the following dependencies:
 
 Debian / Ubuntu
 ```
@@ -26,6 +26,22 @@ Alpine
 sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf
 ```
 
+## Building and running
+
+Once the dependencies are installed, clone the directory and cd into it:
+```
+git clone https://github.com/skycoin/cx-space-arena.git
+cd cx-space-arena
+```
+Then, you can either run the game directly:
+```
+go run main.go
+```
+Or build it and run the executable:
+```
+go build
+./cx-space-arena
+```
 
 ## Summary of the Project
 Space Arena consists a simulation environment where an agent is commanding a space ship within one given space structured on an Agent-Based Model. The commands the players are allowed to operate are: 

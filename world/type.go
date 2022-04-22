@@ -9,15 +9,17 @@ import (
 )
 
 type World struct {
-	Asteroids   []*asteroid.Asteroid
-	Bullets     []*bullet.Bullet
-	Players     [5]*player.Player
-	PlayerCount int
+	Asteroids    []*asteroid.Asteroid
+	Bullets      [5]*bullet.Bullet
+	Players      [5]*player.Player
+	PlayerCount  int
+	BulletsOnScr int
 }
 
 // World constructor
 func NewWorld() *World {
 	world := &World{
+		Bullets:     [5]*bullet.Bullet{nil, nil, nil, nil, nil},
 		Players:     [5]*player.Player{nil, nil, nil, nil, nil},
 		PlayerCount: 0,
 	}
@@ -32,5 +34,17 @@ func (world *World) AddNewPlayer() (*World, error) {
 	}
 	world.PlayerCount++
 	world.Players[world.PlayerCount-1] = player.NewPlayer(world.PlayerCount)
+	return world, nil
+}
+
+func (world *World) AddNewBullet(p *player.Player) (*World, error) {
+	world.BulletsOnScr++
+	world.Bullets[world.BulletsOnScr-1] = bullet.NewBullet(p)
+	return world, nil
+}
+
+func (world *World) RemoveBullet(i int) (*World, error) {
+	world.BulletsOnScr--
+	world.Bullets[i] = nil
 	return world, nil
 }

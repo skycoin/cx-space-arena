@@ -11,6 +11,7 @@ import (
 func main() {
 	ebiten.SetWindowTitle("cx-space-arena")
 	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowResizable(true)
 
 	g := game.Game{World: world.NewWorld()}
 

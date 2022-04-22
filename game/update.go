@@ -10,6 +10,26 @@ import (
 func (g *Game) Update() error {
 	pl1 := g.World.Players[0]
 
+	if ebiten.IsKeyPressed(ebiten.KeySpace) {
+		if pl1.Cooldown == 0 {
+			g.World.AddNewBullet(pl1)
+			pl1.Cooldown = 11
+		}
+	}
+
+	if pl1.Cooldown > 0 {
+		pl1.Cooldown--
+	}
+
+	for i, v := range g.World.Bullets {
+		if v != nil {
+			if v.Lifespan == 0 {
+				g.World.RemoveBullet(i)
+			}
+			v.Lifespan--
+		}
+	}
+
 	// Constant force against the ship
 	if pl1.Velocity < 0 {
 		pl1.Velocity += 5
@@ -49,5 +69,6 @@ func (g *Game) Update() error {
 	// Use sine and cosine functions to get X and Y positions based on rotation and velocity
 	pl1.PositionX += math.Cos(float64(pl1.Rotation)*(math.Pi/180)) * float64(pl1.Velocity) / 10
 	pl1.PositionY += math.Sin(float64(pl1.Rotation)*(math.Pi/180)) * float64(pl1.Velocity) / 10
+
 	return nil
 }

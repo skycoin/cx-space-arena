@@ -8,4 +8,5 @@ type Player struct {
 	Health               int
 	Points               int
 	Deaths               int
+	Cooldown             int
 }
