@@ -2,6 +2,7 @@ package game
 
 import (
 	"fmt"
+	"image/color"
 	_ "image/png"
 	"log"
 	"math"
@@ -29,6 +30,13 @@ func (g *Game) Draw(scr *ebiten.Image) {
 	// TODO: Automatic color for each player
 	// options.ColorM.Scale()
 	scr.DrawImage(ship1, &optionsPlayer)
+
+	for _, v := range g.World.Bullets {
+		if v != nil && v.Lifespan > 0 {
+			ebitenutil.DrawLine(scr, v.PositionX+math.Cos(float64(v.FireAngle)*(math.Pi/180))*25, v.PositionY+math.Sin(float64(v.FireAngle)*(math.Pi/180))*25, v.PositionX+math.Cos(float64(v.FireAngle)*(math.Pi/180))*500, v.PositionY+math.Sin(float64(v.FireAngle)*(math.Pi/180))*500, color.White)
+		}
+	}
+
 	// Get FPS counter
 	ebitenutil.DebugPrint(scr, fmt.Sprint(ebiten.CurrentTPS()))
 }

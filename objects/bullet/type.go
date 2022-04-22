@@ -1,6 +1,12 @@
 package bullet
 
+import (
+	"github.com/skycoin/cx-space-arena/objects/player"
+)
+
 type Bullet struct {
-	positionX, positionY float64
-	velocityX, velocityY float64
+	PositionX, PositionY float64
+	FireAngle            int
+	FromPlayer           *player.Player
+	Lifespan             int
 }
