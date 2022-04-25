@@ -10,7 +10,7 @@ import (
 
 type World struct {
 	Asteroids    []*asteroid.Asteroid
-	Bullets      [5]*bullet.Bullet
+	Bullets      []*bullet.Bullet
 	Players      [5]*player.Player
 	PlayerCount  int
 	BulletsOnScr int
@@ -19,7 +19,7 @@ type World struct {
 // World constructor
 func NewWorld() *World {
 	world := &World{
-		Bullets:     [5]*bullet.Bullet{nil, nil, nil, nil, nil},
+		Bullets:     []*bullet.Bullet{},
 		Players:     [5]*player.Player{nil, nil, nil, nil, nil},
 		PlayerCount: 0,
 	}
