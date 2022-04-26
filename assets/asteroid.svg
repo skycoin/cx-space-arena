@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="asteroid.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:jvs="http://www.janvas.com/jvs">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.4187009"
+     inkscape:cx="397.65857"
+     inkscape:cy="560.06567"
+     inkscape:window-width="1298"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <jvs:data
+       data-type="jvs-doc-preferences">{&quot;unitKey&quot;:&quot;PIXEL&quot;,&quot;unitValue&quot;:1,&quot;drawingScale&quot;:1,&quot;findAllElementAtPoint&quot;:1,&quot;optimizeZoom&quot;:false,&quot;mantainAspectRatio&quot;:true,&quot;interactionLabelVisibility&quot;:false,&quot;svgAlignmentPreserveAspectRatio&quot;:&quot;unset&quot;,&quot;snap&quot;:{&quot;distance&quot;:10,&quot;offsetDistance&quot;:50,&quot;snapToPoints&quot;:true,&quot;snapToContour&quot;:true,&quot;snapToPerpendicular&quot;:true,&quot;snapToTangent&quot;:true,&quot;snapToIntersection&quot;:true,&quot;snapToCenter&quot;:true,&quot;snapToGrid&quot;:true,&quot;snapToOffset&quot;:true,&quot;snapToAngles&quot;:true,&quot;snapAngleList&quot;:[45],&quot;useSmartPoints&quot;:true,&quot;useSmartGuides&quot;:true},&quot;fixedDecimals&quot;:0,&quot;rulersVisibility&quot;:true,&quot;gridVisibility&quot;:false,&quot;elementOriginVisibility&quot;:false,&quot;gridStep&quot;:1,&quot;origin&quot;:{&quot;x&quot;:0,&quot;y&quot;:0},&quot;selectMainNodes&quot;:true,&quot;scaleStrokeAndEffects&quot;:true,&quot;scaleText&quot;:true,&quot;moveStep&quot;:1,&quot;rotateStep&quot;:45}</jvs:data>
+    <path
+       style="fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0.57191045,115.96972 40.323017,69.522882 154.93031,51.262756 l 39.14212,34.51456 16.15611,66.219064 -64.15981,48.70585 4.49377,44.41504 c 0,0 -81.415734,-7.853 -92.857564,-5.16307 -11.441827,2.68992 -43.323559,-31.40679 -43.323559,-31.40679 l 3.055354,-44.48816 z"
+       id="path201" />
+  </g>
+</svg>

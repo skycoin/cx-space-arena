@@ -19,32 +19,47 @@ type World struct {
 // World constructor
 func NewWorld() *World {
 	world := &World{
-		Bullets:     []*bullet.Bullet{},
 		Players:     [5]*player.Player{nil, nil, nil, nil, nil},
 		PlayerCount: 0,
 	}
 	world.AddNewPlayer()
+	world.AddAst()
+	world.AddAst()
+	world.AddAst()
+	world.AddAst()
+	world.AddAst()
 	return world
 }
 
-// Add a new player with default settings to the World
+// Add a new player to the World
 func (world *World) AddNewPlayer() (*World, error) {
-	if world.PlayerCount == 5 {
-		return world, errors.New("Max number of players reached")
+	if world.PlayerCount >= len(world.Players) {
+		return world, errors.New("Max player count reached")
 	}
+	world.Players[world.PlayerCount] = player.NewPlayer(world.PlayerCount + 1)
 	world.PlayerCount++
-	world.Players[world.PlayerCount-1] = player.NewPlayer(world.PlayerCount)
 	return world, nil
 }
 
+// Add a new bullet belonging to a player to the World
 func (world *World) AddNewBullet(p *player.Player) (*World, error) {
 	world.BulletsOnScr++
-	world.Bullets[world.BulletsOnScr-1] = bullet.NewBullet(p)
+	world.Bullets = append(world.Bullets, bullet.NewBullet(p))
 	return world, nil
 }
 
+// Remove bullet at the specified index.
+// index will come from the for loop from which the function is called
 func (world *World) RemoveBullet(i int) (*World, error) {
+	if i >= len(world.Bullets) {
+		return world, errors.New("Bullet does not exist")
+	}
+	world.Bullets = append(world.Bullets[:i], world.Bullets[i+1:]...)
 	world.BulletsOnScr--
-	world.Bullets[i] = nil
+	return world, nil
+}
+
+func (world *World) AddAst() (*World, error) {
+	world.Asteroids = append(world.Asteroids, asteroid.NewAsteroid())
 	return world, nil
 }

@@ -84,5 +84,14 @@ func (g *Game) Update() error {
 		pl1.PositionY = float64(h)
 	}
 
+	// Update asteroid
+	for _, v := range g.World.Asteroids {
+		if v != nil {
+			v.PositionX += float64(v.VelocityX)
+			v.PositionY += float64(v.VelocityY)
+			v.Rotation += v.VelocityR
+		}
+	}
+
 	return nil
 }
