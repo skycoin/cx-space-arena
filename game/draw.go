@@ -16,17 +16,12 @@ func (g *Game) Draw(scr *ebiten.Image) {
 		}
 	}
 	for _, b := range g.World.Bullets {
-		if b != nil && b.Lifespan > 0 {
+		if b != nil {
 			b.Draw(scr)
 		}
 	}
 	for _, a := range g.World.Asteroids {
-		w, h := ebiten.WindowSize()
-		if a != nil &&
-			a.PositionX > 0-50 && // Offset unload by 50 to compensate for asteroid size
-			a.PositionY > 0-50 &&
-			a.PositionX < float64(w)+50 &&
-			a.PositionY < float64(h)+50 {
+		if a != nil {
 			a.Draw(scr)
 		}
 	}
