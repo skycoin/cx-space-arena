@@ -20,6 +20,7 @@ type Asteroid struct {
 
 // Asteroid constructor
 func NewAsteroid() *Asteroid {
+	direction := [2]int{-1, 1}
 	w, h := ebiten.WindowSize()
 	asteroid, _, err := ebitenutil.NewImageFromFile("assets/asteroid.png")
 	if err != nil {
@@ -28,12 +29,21 @@ func NewAsteroid() *Asteroid {
 	return &Asteroid{
 		PositionX: float64(rand.Intn(w)),
 		PositionY: float64(rand.Intn(h)),
-		VelocityX: rand.Intn(10) - 5,
-		VelocityY: rand.Intn(10) - 5,
-		Rotation:  rand.Intn(360),
-		VelocityR: rand.Intn(10) - 5,
-		Mass:      float64(rand.Intn(100)+1) * 0.1,
+		VelocityX: direction[rand.Intn(2)], // Velocity is determined by mass later
+		VelocityY: direction[rand.Intn(2)],
+		Rotation:  rand.Intn(361),
+		VelocityR: direction[rand.Intn(2)],         // Same goes for rotation speed
+		Mass:      float64(rand.Intn(21)+20) * 0.1, // Asteroid mass is between 2 and 4
 		Health:    100,
 		Sprite:    asteroid,
 	}
+}
+
+func IndexOf(asteroids []*Asteroid, a *Asteroid) int {
+	for i, v := range asteroids {
+		if v == a {
+			return i
+		}
+	}
+	return -1
 }

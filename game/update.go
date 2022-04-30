@@ -12,7 +12,7 @@ func (g *Game) Update() error {
 
 	if ebiten.IsKeyPressed(ebiten.KeySpace) {
 		if pl1.Cooldown == 0 {
-			g.World.AddNewBullet(pl1)
+			g.World.AddBullet(pl1)
 			pl1.Cooldown = 11
 		}
 	}
@@ -87,9 +87,9 @@ func (g *Game) Update() error {
 	// Update asteroid
 	for _, v := range g.World.Asteroids {
 		if v != nil {
-			v.PositionX += float64(v.VelocityX)
-			v.PositionY += float64(v.VelocityY)
-			v.Rotation += v.VelocityR
+			v.PositionX += float64(v.VelocityX) * v.Mass
+			v.PositionY += float64(v.VelocityY) * v.Mass
+			v.Rotation += v.VelocityR * int(v.Mass)
 		}
 	}
 

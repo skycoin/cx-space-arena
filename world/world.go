@@ -22,7 +22,7 @@ func NewWorld() *World {
 		Players:     [5]*player.Player{nil, nil, nil, nil, nil},
 		PlayerCount: 0,
 	}
-	world.AddNewPlayer()
+	world.AddPlayer()
 	world.AddAst()
 	world.AddAst()
 	world.AddAst()
@@ -32,7 +32,7 @@ func NewWorld() *World {
 }
 
 // Add a new player to the World
-func (world *World) AddNewPlayer() (*World, error) {
+func (world *World) AddPlayer() (*World, error) {
 	if world.PlayerCount >= len(world.Players) {
 		return world, errors.New("Max player count reached")
 	}
@@ -42,7 +42,7 @@ func (world *World) AddNewPlayer() (*World, error) {
 }
 
 // Add a new bullet belonging to a player to the World
-func (world *World) AddNewBullet(p *player.Player) (*World, error) {
+func (world *World) AddBullet(p *player.Player) (*World, error) {
 	world.BulletsOnScr++
 	world.Bullets = append(world.Bullets, bullet.NewBullet(p))
 	return world, nil
@@ -60,6 +60,10 @@ func (world *World) RemoveBullet(i int) (*World, error) {
 }
 
 func (world *World) AddAst() (*World, error) {
-	world.Asteroids = append(world.Asteroids, asteroid.NewAsteroid())
+	if asteroid.IndexOf(world.Asteroids, nil) == -1 {
+		world.Asteroids = append(world.Asteroids, asteroid.NewAsteroid())
+	} else {
+		world.Asteroids[asteroid.IndexOf(world.Asteroids, nil)] = asteroid.NewAsteroid()
+	}
 	return world, nil
 }
