@@ -34,7 +34,7 @@ func NewAsteroid() *Asteroid {
 		Rotation:  rand.Intn(361),
 		VelocityR: direction[rand.Intn(2)],         // Same goes for rotation speed
 		Mass:      float64(rand.Intn(21)+30) * 0.1, // Asteroid mass is between 3 and 5
-		Health:    100,
+		Health:    90,
 		Sprite:    asteroid,
 	}
 }

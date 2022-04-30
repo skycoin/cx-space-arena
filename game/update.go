@@ -22,5 +22,6 @@ func (g *Game) Update() error {
 			}
 		}
 	}
+	g.UpdateCollisions()
 	return nil
 }
