@@ -8,7 +8,7 @@ import (
 
 // Player draw method
 func (p *Player) Draw(scr *ebiten.Image) {
-	w, h := ebiten.WindowSize()
+	w, h := p.Sprite.Size()
 	optionsPlayer := ebiten.DrawImageOptions{} // Translate image to rotate along center
 	optionsPlayer.GeoM.Translate(-float64(w)/2, -float64(h)/2)
 	optionsPlayer.GeoM.Rotate(float64(p.Rotation+90) * (math.Pi / 180))

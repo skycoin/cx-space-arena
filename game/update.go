@@ -4,6 +4,7 @@ import (
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 // Update function, called 60 times each second
@@ -24,7 +25,7 @@ func (g *Game) Update() error {
 	for i, v := range g.World.Bullets {
 		if v != nil {
 			if v.Lifespan == 0 {
-				g.World.RemoveBullet(i)
+				g.World.Bullets[i] = nil
 			}
 			v.Lifespan--
 		}
@@ -87,10 +88,14 @@ func (g *Game) Update() error {
 	// Update asteroid
 	for _, v := range g.World.Asteroids {
 		if v != nil {
-			v.PositionX += float64(v.VelocityX) * v.Mass
-			v.PositionY += float64(v.VelocityY) * v.Mass
-			v.Rotation += v.VelocityR * int(v.Mass)
+			v.PositionX += float64(v.VelocityX) * 3 / v.Mass // Velocity scales opposite of mass
+			v.PositionY += float64(v.VelocityY) * 3 / v.Mass
+			v.Rotation += v.VelocityR * 3 / int(v.Mass)
 		}
+	}
+
+	if inpututil.IsKeyJustPressed(ebiten.KeyA) {
+		g.World.AddAst()
 	}
 
 	return nil

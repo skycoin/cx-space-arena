@@ -22,7 +22,7 @@ func (g *Game) Draw(scr *ebiten.Image) {
 			ebitenutil.DrawLine(scr, b.PositionX+math.Cos(float64(b.FireAngle)*(math.Pi/180))*25, b.PositionY+math.Sin(float64(b.FireAngle)*(math.Pi/180))*25, b.PositionX+math.Cos(float64(b.FireAngle)*(math.Pi/180))*500, b.PositionY+math.Sin(float64(b.FireAngle)*(math.Pi/180))*500, color.White)
 		}
 	}
-	for i, a := range g.World.Asteroids {
+	for _, a := range g.World.Asteroids {
 		w, h := ebiten.WindowSize()
 		if a != nil &&
 			a.PositionX > 0-50 && // Offset unload by 50 to compensate for asteroid size
@@ -30,9 +30,6 @@ func (g *Game) Draw(scr *ebiten.Image) {
 			a.PositionX < float64(w)+50 &&
 			a.PositionY < float64(h)+50 {
 			a.Draw(scr)
-		} else {
-			g.World.Asteroids[i] = nil
-			g.World.AddAst()
 		}
 	}
 	// Get FPS counter

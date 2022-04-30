@@ -8,7 +8,7 @@ import (
 
 // Asteroid draw method
 func (a *Asteroid) Draw(scr *ebiten.Image) {
-	w, h := ebiten.WindowSize()
+	w, h := a.Sprite.Size()
 	options := ebiten.DrawImageOptions{}
 	options.GeoM.Translate(-float64(w)/2, -float64(h)/2)
 	options.GeoM.Rotate(float64(a.Rotation) * (math.Pi / 180))

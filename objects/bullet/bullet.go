@@ -18,3 +18,12 @@ func NewBullet(p *player.Player) *Bullet {
 		Lifespan:   10,
 	}
 }
+
+func IndexOf(bullets []*Bullet, b *Bullet) int {
+	for i, v := range bullets {
+		if v == b {
+			return i
+		}
+	}
+	return -1
+}

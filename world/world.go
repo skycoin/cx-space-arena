@@ -9,11 +9,10 @@ import (
 )
 
 type World struct {
-	Asteroids    []*asteroid.Asteroid
-	Bullets      []*bullet.Bullet
-	Players      [5]*player.Player
-	PlayerCount  int
-	BulletsOnScr int
+	Asteroids   []*asteroid.Asteroid
+	Bullets     []*bullet.Bullet
+	Players     [5]*player.Player
+	PlayerCount int
 }
 
 // World constructor
@@ -23,11 +22,6 @@ func NewWorld() *World {
 		PlayerCount: 0,
 	}
 	world.AddPlayer()
-	world.AddAst()
-	world.AddAst()
-	world.AddAst()
-	world.AddAst()
-	world.AddAst()
 	return world
 }
 
@@ -43,22 +37,15 @@ func (world *World) AddPlayer() (*World, error) {
 
 // Add a new bullet belonging to a player to the World
 func (world *World) AddBullet(p *player.Player) (*World, error) {
-	world.BulletsOnScr++
-	world.Bullets = append(world.Bullets, bullet.NewBullet(p))
-	return world, nil
-}
-
-// Remove bullet at the specified index.
-// index will come from the for loop from which the function is called
-func (world *World) RemoveBullet(i int) (*World, error) {
-	if i >= len(world.Bullets) {
-		return world, errors.New("Bullet does not exist")
+	if bullet.IndexOf(world.Bullets, nil) == -1 {
+		world.Bullets = append(world.Bullets, bullet.NewBullet(p))
+	} else {
+		world.Bullets[bullet.IndexOf(world.Bullets, nil)] = bullet.NewBullet(p)
 	}
-	world.Bullets = append(world.Bullets[:i], world.Bullets[i+1:]...)
-	world.BulletsOnScr--
 	return world, nil
 }
 
+// Add a new asteroid to the World
 func (world *World) AddAst() (*World, error) {
 	if asteroid.IndexOf(world.Asteroids, nil) == -1 {
 		world.Asteroids = append(world.Asteroids, asteroid.NewAsteroid())
