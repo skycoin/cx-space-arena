@@ -22,12 +22,10 @@ func (g *Game) Update() error {
 		pl1.Cooldown--
 	}
 
-	for i, v := range g.World.Bullets {
-		if v != nil {
-			if v.Lifespan == 0 {
-				g.World.Bullets[i] = nil
-			}
-			v.Lifespan--
+	for _, b := range g.World.Bullets {
+		if b != nil {
+			b.PositionX += math.Cos(float64(b.Angle)*(math.Pi/180)) * 10
+			b.PositionY += math.Sin(float64(b.Angle)*(math.Pi/180)) * 10
 		}
 	}
 

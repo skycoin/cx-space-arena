@@ -2,9 +2,7 @@ package game
 
 import (
 	"fmt"
-	"image/color"
 	_ "image/png"
-	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
@@ -19,7 +17,7 @@ func (g *Game) Draw(scr *ebiten.Image) {
 	}
 	for _, b := range g.World.Bullets {
 		if b != nil && b.Lifespan > 0 {
-			ebitenutil.DrawLine(scr, b.PositionX+math.Cos(float64(b.FireAngle)*(math.Pi/180))*25, b.PositionY+math.Sin(float64(b.FireAngle)*(math.Pi/180))*25, b.PositionX+math.Cos(float64(b.FireAngle)*(math.Pi/180))*500, b.PositionY+math.Sin(float64(b.FireAngle)*(math.Pi/180))*500, color.White)
+			b.Draw(scr)
 		}
 	}
 	for _, a := range g.World.Asteroids {

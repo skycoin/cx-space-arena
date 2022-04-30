@@ -1,21 +1,34 @@
 package bullet
 
-import "github.com/skycoin/cx-space-arena/objects/player"
+import (
+	"log"
+	"math"
+
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/skycoin/cx-space-arena/objects/player"
+)
 
 type Bullet struct {
 	PositionX, PositionY float64
-	FireAngle            int
-	FromPlayer           *player.Player
+	Angle                int
+	Player               *player.Player
 	Lifespan             int
+	Sprite               *ebiten.Image
 }
 
 // Bullet constructor
 func NewBullet(p *player.Player) *Bullet {
+	bullet, _, err := ebitenutil.NewImageFromFile("assets/bullet.png")
+	if err != nil {
+		log.Fatal(err)
+	}
 	return &Bullet{
-		PositionX: p.PositionX, PositionY: p.PositionY,
-		FireAngle:  p.Rotation,
-		FromPlayer: p,
-		Lifespan:   10,
+		PositionX: p.PositionX + math.Cos(float64(p.Rotation)*(math.Pi/180))*50, PositionY: p.PositionY + math.Sin(float64(p.Rotation)*(math.Pi/180))*50,
+		Angle:    p.Rotation,
+		Player:   p,
+		Lifespan: 10,
+		Sprite:   bullet,
 	}
 }
 
