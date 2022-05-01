@@ -1,10 +1,8 @@
 package player
 
 import (
-	"log"
-
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/skycoin/cx-space-arena/assets"
 )
 
 type Player struct {
@@ -22,10 +20,6 @@ type Player struct {
 // Player contructor
 func NewPlayer(ID int) *Player {
 	w, h := ebiten.WindowSize()
-	ship, _, err := ebitenutil.NewImageFromFile("assets/ship1.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	return &Player{
 		PlayerID:  ID,
 		PositionX: float64(w) / 2, PositionY: float64(h) / 2,
@@ -35,6 +29,6 @@ func NewPlayer(ID int) *Player {
 		Points:   0,
 		Deaths:   0,
 		Cooldown: 0,
-		Sprite:   ship,
+		Sprite:   assets.SpriteList.Player,
 	}
 }

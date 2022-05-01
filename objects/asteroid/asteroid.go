@@ -1,11 +1,10 @@
 package asteroid
 
 import (
-	"log"
 	"math/rand"
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/skycoin/cx-space-arena/assets"
 )
 
 type Asteroid struct {
@@ -22,10 +21,6 @@ type Asteroid struct {
 func NewAsteroid() *Asteroid {
 	direction := [2]int{-1, 1}
 	w, h := ebiten.WindowSize()
-	asteroid, _, err := ebitenutil.NewImageFromFile("assets/asteroid.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	return &Asteroid{
 		PositionX: float64(rand.Intn(w)),
 		PositionY: float64(rand.Intn(h)),
@@ -35,7 +30,7 @@ func NewAsteroid() *Asteroid {
 		VelocityR: direction[rand.Intn(2)],         // Same goes for rotation speed
 		Mass:      float64(rand.Intn(21)+30) * 0.1, // Asteroid mass is between 3 and 5
 		Health:    90,
-		Sprite:    asteroid,
+		Sprite:    assets.SpriteList.Asteroid[0],
 	}
 }
 

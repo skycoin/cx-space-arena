@@ -1,11 +1,10 @@
 package bullet
 
 import (
-	"log"
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/skycoin/cx-space-arena/assets"
 	"github.com/skycoin/cx-space-arena/objects/player"
 )
 
@@ -19,16 +18,12 @@ type Bullet struct {
 
 // Bullet constructor
 func NewBullet(p *player.Player) *Bullet {
-	bullet, _, err := ebitenutil.NewImageFromFile("assets/bullet.png")
-	if err != nil {
-		log.Fatal(err)
-	}
 	return &Bullet{
 		PositionX: p.PositionX + math.Cos(float64(p.Rotation)*(math.Pi/180))*50, PositionY: p.PositionY + math.Sin(float64(p.Rotation)*(math.Pi/180))*50,
 		Angle:    p.Rotation,
 		Player:   p,
 		Lifespan: 10,
-		Sprite:   bullet,
+		Sprite:   assets.SpriteList.Bullet,
 	}
 }
 
