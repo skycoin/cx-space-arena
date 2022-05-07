@@ -37,11 +37,11 @@ func (world *World) AddPlayer() (*World, error) {
 }
 
 // Add a new bullet belonging to a player to the World
-func (world *World) AddBullet(p *player.Player) (*World, error) {
+func (world *World) AddBullet(player *player.Player) (*World, error) {
 	if bullet.IndexOf(world.Bullets, nil) == -1 {
-		world.Bullets = append(world.Bullets, bullet.NewBullet(p))
+		world.Bullets = append(world.Bullets, bullet.NewBullet(player))
 	} else {
-		world.Bullets[bullet.IndexOf(world.Bullets, nil)] = bullet.NewBullet(p)
+		world.Bullets[bullet.IndexOf(world.Bullets, nil)] = bullet.NewBullet(player)
 	}
 	return world, nil
 }

@@ -7,21 +7,21 @@ func (g *Game) Update() error {
 		g.World.CurrentTick = 0
 	}
 	g.UpdateInputs()
-	for _, p := range g.World.Players {
-		if p != nil {
-			p.Update()
+	for _, player := range g.World.Players {
+		if player != nil {
+			player.Update()
 		}
 	}
-	for i, b := range g.World.Bullets {
-		if b != nil {
-			if !b.Update() {
+	for i, bullet := range g.World.Bullets {
+		if bullet != nil {
+			if !bullet.Update() {
 				g.World.Bullets[i] = nil
 			}
 		}
 	}
-	for i, a := range g.World.Asteroids {
-		if a != nil {
-			if !a.Update() {
+	for i, asteroid := range g.World.Asteroids {
+		if asteroid != nil {
+			if !asteroid.Update() {
 				g.World.Asteroids[i] = nil
 			}
 		}

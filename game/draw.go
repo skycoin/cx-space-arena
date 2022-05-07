@@ -9,26 +9,26 @@ import (
 )
 
 // Draw function, called 60 times each second
-func (g *Game) Draw(scr *ebiten.Image) {
-	for _, p := range g.World.Players {
-		if p != nil {
-			if p.Recoil > 0 && g.World.CurrentTick&2 == 0 {
+func (g *Game) Draw(screen *ebiten.Image) {
+	for _, player := range g.World.Players {
+		if player != nil {
+			if player.Recoil > 0 && g.World.CurrentTick&2 == 0 {
 				continue
 			}
-			p.Draw(scr)
+			player.Draw(screen)
 		}
 	}
-	for _, b := range g.World.Bullets {
-		if b != nil {
-			b.Draw(scr)
+	for _, bullet := range g.World.Bullets {
+		if bullet != nil {
+			bullet.Draw(screen)
 		}
 	}
-	for _, a := range g.World.Asteroids {
-		if a != nil {
-			a.Draw(scr)
+	for _, asteroid := range g.World.Asteroids {
+		if asteroid != nil {
+			asteroid.Draw(screen)
 		}
 	}
 	// Get FPS counter
-	ebitenutil.DebugPrint(scr, fmt.Sprint(ebiten.CurrentTPS()))
+	ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.CurrentTPS()))
 
 }

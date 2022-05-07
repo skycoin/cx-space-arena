@@ -1,38 +1,40 @@
 package game
 
+import "github.com/skycoin/cx-space-arena/consts"
+
 func (g *Game) UpdateCollisions() {
-	for _, a := range g.World.Asteroids {
-		if a == nil {
+	for _, asteroid := range g.World.Asteroids {
+		if asteroid == nil {
 			continue
 		}
-		for i, b := range g.World.Bullets {
-			if b == nil {
+		for i, bullet := range g.World.Bullets {
+			if bullet == nil {
 				continue
 			}
-			if overlap(b.PositionX-25, b.PositionY-25, b.PositionX+25, b.PositionY+25,
-				a.PositionX-12.5*a.Mass, a.PositionY-12.5*a.Mass, a.PositionX+12.5*a.Mass, a.PositionY+12.5*a.Mass) {
-				a.Health -= 30
+			if overlap(bullet.PositionX-consts.BULLET_HITBOX_OFFSET, bullet.PositionY-consts.BULLET_HITBOX_OFFSET, bullet.PositionX+consts.BULLET_HITBOX_OFFSET, bullet.PositionY+consts.BULLET_HITBOX_OFFSET,
+				asteroid.PositionX-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionX+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass) {
+				asteroid.Health -= consts.BULLET_DAMAGE
 				g.World.Bullets[i] = nil
 			}
 		}
-		for _, p := range g.World.Players {
-			if p == nil || p.Recoil > 0 {
+		for _, player := range g.World.Players {
+			if player == nil || player.Recoil > 0 {
 				continue
 			}
-			if overlap(p.PositionX-25, p.PositionY-25, p.PositionX+25, p.PositionY+25,
-				a.PositionX-12.5*a.Mass, a.PositionY-12.5*a.Mass, a.PositionX+12.5*a.Mass, a.PositionY+12.5*a.Mass) {
-				p.Health -= 15
-				p.Velocity = -130
-				p.Recoil = 30
+			if overlap(player.PositionX-consts.PLAYER_HITBOX_OFFSET, player.PositionY-consts.PLAYER_HITBOX_OFFSET, player.PositionX+consts.PLAYER_HITBOX_OFFSET, player.PositionY+consts.PLAYER_HITBOX_OFFSET,
+				asteroid.PositionX-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionX+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass) {
+				player.Health -= consts.ASTEROID_DAMAGE
+				player.Velocity = consts.RECOIL_VELOCITY
+				player.Recoil = consts.RECOIL_FRAMES
 			}
 		}
 	}
 }
 
-func overlap(l1x float64, l1y float64, r1x float64, r1y float64,
-	l2x float64, l2y float64, r2x float64, r2y float64) bool {
+func overlap(point1x float64, point1y float64, point2x float64, point2y float64,
+	point3x float64, point3y float64, point4x float64, point4y float64) bool {
 
-	if l1x >= r2x || r1x <= l2x || l1y >= r2y || r1y <= l2y {
+	if point1x >= point4x || point2x <= point3x || point1y >= point4y || point2y <= point3y {
 		return false
 	}
 	return true

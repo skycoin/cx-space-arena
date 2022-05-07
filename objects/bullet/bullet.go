@@ -5,6 +5,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/skycoin/cx-space-arena/assets"
+	"github.com/skycoin/cx-space-arena/consts"
 	"github.com/skycoin/cx-space-arena/objects/player"
 )
 
@@ -17,19 +18,19 @@ type Bullet struct {
 }
 
 // Bullet constructor
-func NewBullet(p *player.Player) *Bullet {
+func NewBullet(player *player.Player) *Bullet {
 	return &Bullet{
-		PositionX: p.PositionX + math.Cos(float64(p.Rotation)*(math.Pi/180))*50, PositionY: p.PositionY + math.Sin(float64(p.Rotation)*(math.Pi/180))*50,
-		Angle:    p.Rotation,
-		Player:   p,
-		Lifespan: 10,
+		PositionX: player.PositionX + math.Cos(float64(player.Rotation)*(math.Pi/180))*50, PositionY: player.PositionY + math.Sin(float64(player.Rotation)*(math.Pi/180))*50,
+		Angle:    player.Rotation,
+		Player:   player,
+		Lifespan: consts.BULLET_LIFESPAN,
 		Sprite:   assets.SpriteList.Bullet,
 	}
 }
 
-func IndexOf(bullets []*Bullet, b *Bullet) int {
+func IndexOf(bullets []*Bullet, bullet *Bullet) int {
 	for i, v := range bullets {
-		if v == b {
+		if v == bullet {
 			return i
 		}
 	}
