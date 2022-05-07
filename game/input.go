@@ -7,6 +7,9 @@ import (
 
 func (g *Game) UpdateInputs() {
 	pl1 := g.World.Players[0]
+	if pl1.Recoil > 0 {
+		return
+	}
 
 	if ebiten.IsKeyPressed(ebiten.KeySpace) {
 		if pl1.Cooldown == 0 {

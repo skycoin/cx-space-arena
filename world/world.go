@@ -13,6 +13,7 @@ type World struct {
 	Bullets     []*bullet.Bullet
 	Players     [5]*player.Player
 	PlayerCount int
+	CurrentTick int
 }
 
 // World constructor

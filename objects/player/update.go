@@ -7,6 +7,9 @@ import (
 )
 
 func (p *Player) Update() {
+	if p.Recoil > 0 {
+		p.Recoil--
+	}
 	if p.Cooldown > 0 {
 		p.Cooldown--
 	}

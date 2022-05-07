@@ -12,6 +12,9 @@ import (
 func (g *Game) Draw(scr *ebiten.Image) {
 	for _, p := range g.World.Players {
 		if p != nil {
+			if p.Recoil > 0 && g.World.CurrentTick&2 == 0 {
+				continue
+			}
 			p.Draw(scr)
 		}
 	}

@@ -11,6 +11,7 @@ type Player struct {
 	Velocity             int
 	Rotation             int
 	Health               int
+	Recoil               int
 	Points               int
 	Deaths               int
 	Cooldown             int
@@ -25,7 +26,8 @@ func NewPlayer(ID int) *Player {
 		PositionX: float64(w) / 2, PositionY: float64(h) / 2,
 		Velocity: 0,
 		Rotation: 0,
-		Health:   100,
+		Health:   90,
+		Recoil:   30,
 		Points:   0,
 		Deaths:   0,
 		Cooldown: 0,
