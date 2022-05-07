@@ -29,17 +29,17 @@ func (g *Game) UpdateInputs() {
 
 	if ebiten.IsKeyPressed(ebiten.KeyLeft) {
 		if pl1.Rotation > 0 {
-			pl1.Rotation -= 5
+			pl1.Rotation -= 4
 		} else {
-			pl1.Rotation = 355
+			pl1.Rotation = 356
 		}
 	}
 
 	if ebiten.IsKeyPressed(ebiten.KeyRight) {
 		if pl1.Rotation < 360 {
-			pl1.Rotation += 5
+			pl1.Rotation += 4
 		} else {
-			pl1.Rotation = 5
+			pl1.Rotation = 4
 		}
 	}
 
