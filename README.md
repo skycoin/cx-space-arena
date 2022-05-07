@@ -1,5 +1,11 @@
 # cx-space-arena 
 
+## Controls
+
+Arrow keys - control the spaceship
+Space bar - Fire a laser
+Key A - Spawn an asteroid
+
 ## Dependencies
 You will need the latest version of Golang, instructions for installation are listed [here](https://go.dev/doc/install)
 
