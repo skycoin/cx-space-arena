@@ -3,7 +3,7 @@ package player
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/skycoin/cx-space-arena/assets"
-	"github.com/skycoin/cx-space-arena/consts"
+	"github.com/skycoin/cx-space-arena/constants"
 )
 
 type Player struct {
@@ -27,8 +27,8 @@ func NewPlayer(ID int) *Player {
 		PositionX: float64(w) / 2, PositionY: float64(h) / 2,
 		Velocity: 0,
 		Rotation: 0,
-		Health:   consts.PLAYER_HEALTH,
-		Recoil:   consts.RECOIL_FRAMES,
+		Health:   constants.PLAYER_HEALTH,
+		Recoil:   constants.RECOIL_FRAMES,
 		Points:   0,
 		Deaths:   0,
 		Cooldown: 0,

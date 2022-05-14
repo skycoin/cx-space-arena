@@ -5,15 +5,15 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
-func (g *Game) UpdateInputs() {
-	player1 := g.World.Players[0]
+func (game *Game) UpdateInputs() {
+	player1 := game.World.Players[0]
 	if player1.Recoil > 0 {
 		return
 	}
 
 	if ebiten.IsKeyPressed(ebiten.KeySpace) {
 		if player1.Cooldown == 0 {
-			g.World.AddBullet(player1)
+			game.World.AddBullet(player1)
 			player1.Cooldown = 11
 		}
 	}
@@ -47,6 +47,6 @@ func (g *Game) UpdateInputs() {
 	}
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyA) {
-		g.World.AddAst()
+		game.World.AddAst()
 	}
 }

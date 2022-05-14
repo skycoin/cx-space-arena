@@ -4,7 +4,7 @@ import (
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/skycoin/cx-space-arena/consts"
+	"github.com/skycoin/cx-space-arena/constants"
 )
 
 func (player *Player) Update() {
@@ -15,10 +15,10 @@ func (player *Player) Update() {
 		player.Cooldown--
 	}
 	if player.Velocity < 0 {
-		player.Velocity += consts.VELOCITY_PER_FRAME
+		player.Velocity += constants.VELOCITY_PER_FRAME
 	}
 	if player.Velocity > 0 {
-		player.Velocity -= consts.VELOCITY_PER_FRAME
+		player.Velocity -= constants.VELOCITY_PER_FRAME
 	}
 
 	player.PositionX += math.Cos(float64(player.Rotation)*(math.Pi/180)) * float64(player.Velocity) / 10

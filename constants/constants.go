@@ -1,4 +1,4 @@
-package consts
+package constants
 
 const (
 	PLAYER_HEALTH        = 90

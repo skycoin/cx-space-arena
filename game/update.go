@@ -1,31 +1,31 @@
 package game
 
 // Update function, called 60 times each second
-func (g *Game) Update() error {
-	g.World.CurrentTick++
-	if g.World.CurrentTick%60 == 0 {
-		g.World.CurrentTick = 0
+func (game *Game) Update() error {
+	game.World.CurrentTick++
+	if game.World.CurrentTick%60 == 0 {
+		game.World.CurrentTick = 0
 	}
-	g.UpdateInputs()
-	for _, player := range g.World.Players {
+	game.UpdateInputs()
+	for _, player := range game.World.Players {
 		if player != nil {
 			player.Update()
 		}
 	}
-	for i, bullet := range g.World.Bullets {
+	for i, bullet := range game.World.Bullets {
 		if bullet != nil {
 			if !bullet.Update() {
-				g.World.Bullets[i] = nil
+				game.World.Bullets[i] = nil
 			}
 		}
 	}
-	for i, asteroid := range g.World.Asteroids {
+	for i, asteroid := range game.World.Asteroids {
 		if asteroid != nil {
 			if !asteroid.Update() {
-				g.World.Asteroids[i] = nil
+				game.World.Asteroids[i] = nil
 			}
 		}
 	}
-	g.UpdateCollisions()
+	game.UpdateCollisions()
 	return nil
 }

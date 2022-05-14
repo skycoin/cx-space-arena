@@ -1,31 +1,31 @@
 package game
 
-import "github.com/skycoin/cx-space-arena/consts"
+import "github.com/skycoin/cx-space-arena/constants"
 
-func (g *Game) UpdateCollisions() {
-	for _, asteroid := range g.World.Asteroids {
+func (game *Game) UpdateCollisions() {
+	for _, asteroid := range game.World.Asteroids {
 		if asteroid == nil {
 			continue
 		}
-		for i, bullet := range g.World.Bullets {
+		for i, bullet := range game.World.Bullets {
 			if bullet == nil {
 				continue
 			}
-			if overlap(bullet.PositionX-consts.BULLET_HITBOX_OFFSET, bullet.PositionY-consts.BULLET_HITBOX_OFFSET, bullet.PositionX+consts.BULLET_HITBOX_OFFSET, bullet.PositionY+consts.BULLET_HITBOX_OFFSET,
-				asteroid.PositionX-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionX+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass) {
-				asteroid.Health -= consts.BULLET_DAMAGE
-				g.World.Bullets[i] = nil
+			if overlap(bullet.PositionX-constants.BULLET_HITBOX_OFFSET, bullet.PositionY-constants.BULLET_HITBOX_OFFSET, bullet.PositionX+constants.BULLET_HITBOX_OFFSET, bullet.PositionY+constants.BULLET_HITBOX_OFFSET,
+				asteroid.PositionX-constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY-constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionX+constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY+constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass) {
+				asteroid.Health -= constants.BULLET_DAMAGE
+				game.World.Bullets[i] = nil
 			}
 		}
-		for _, player := range g.World.Players {
+		for _, player := range game.World.Players {
 			if player == nil || player.Recoil > 0 {
 				continue
 			}
-			if overlap(player.PositionX-consts.PLAYER_HITBOX_OFFSET, player.PositionY-consts.PLAYER_HITBOX_OFFSET, player.PositionX+consts.PLAYER_HITBOX_OFFSET, player.PositionY+consts.PLAYER_HITBOX_OFFSET,
-				asteroid.PositionX-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY-consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionX+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY+consts.ASTEROID_HITBOX_OFFSET*asteroid.Mass) {
-				player.Health -= consts.ASTEROID_DAMAGE
-				player.Velocity = consts.RECOIL_VELOCITY
-				player.Recoil = consts.RECOIL_FRAMES
+			if overlap(player.PositionX-constants.PLAYER_HITBOX_OFFSET, player.PositionY-constants.PLAYER_HITBOX_OFFSET, player.PositionX+constants.PLAYER_HITBOX_OFFSET, player.PositionY+constants.PLAYER_HITBOX_OFFSET,
+				asteroid.PositionX-constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY-constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionX+constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass, asteroid.PositionY+constants.ASTEROID_HITBOX_OFFSET*asteroid.Mass) {
+				player.Health -= constants.ASTEROID_DAMAGE
+				player.Velocity = constants.RECOIL_VELOCITY
+				player.Recoil = constants.RECOIL_FRAMES
 			}
 		}
 	}

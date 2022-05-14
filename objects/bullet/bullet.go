@@ -5,7 +5,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/skycoin/cx-space-arena/assets"
-	"github.com/skycoin/cx-space-arena/consts"
+	"github.com/skycoin/cx-space-arena/constants"
 	"github.com/skycoin/cx-space-arena/objects/player"
 )
 
@@ -23,7 +23,7 @@ func NewBullet(player *player.Player) *Bullet {
 		PositionX: player.PositionX + math.Cos(float64(player.Rotation)*(math.Pi/180))*50, PositionY: player.PositionY + math.Sin(float64(player.Rotation)*(math.Pi/180))*50,
 		Angle:    player.Rotation,
 		Player:   player,
-		Lifespan: consts.BULLET_LIFESPAN,
+		Lifespan: constants.BULLET_LIFESPAN,
 		Sprite:   assets.SpriteList.Bullet,
 	}
 }

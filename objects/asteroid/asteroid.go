@@ -5,7 +5,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/skycoin/cx-space-arena/assets"
-	"github.com/skycoin/cx-space-arena/consts"
+	"github.com/skycoin/cx-space-arena/constants"
 )
 
 type Asteroid struct {
@@ -28,9 +28,9 @@ func NewAsteroid() *Asteroid {
 		VelocityX: direction[rand.Intn(2)], // Velocity is determined by mass later
 		VelocityY: direction[rand.Intn(2)],
 		Rotation:  rand.Intn(361),
-		VelocityR: direction[rand.Intn(2)],                                                     // Same goes for rotation speed
-		Mass:      float64(rand.Intn(consts.ASTEROID_MASS_VAR)+consts.ASTEROID_MIN_MASS) * 0.1, // Asteroid mass is between 3 and 5
-		Health:    consts.ASTEROID_HEALTH,
+		VelocityR: direction[rand.Intn(2)],                                                           // Same goes for rotation speed
+		Mass:      float64(rand.Intn(constants.ASTEROID_MASS_VAR)+constants.ASTEROID_MIN_MASS) * 0.1, // Asteroid mass is between 3 and 5
+		Health:    constants.ASTEROID_HEALTH,
 		Sprite:    assets.SpriteList.Asteroid[0],
 	}
 }
