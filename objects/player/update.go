@@ -4,36 +4,37 @@ import (
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/skycoin/cx-space-arena/constants"
 )
 
-func (p *Player) Update() {
-	if p.Recoil > 0 {
-		p.Recoil--
+func (player *Player) Update() {
+	if player.Recoil > 0 {
+		player.Recoil--
 	}
-	if p.Cooldown > 0 {
-		p.Cooldown--
+	if player.Cooldown > 0 {
+		player.Cooldown--
 	}
-	if p.Velocity < 0 {
-		p.Velocity += 5
+	if player.Velocity < 0 {
+		player.Velocity += constants.VELOCITY_PER_FRAME
 	}
-	if p.Velocity > 0 {
-		p.Velocity -= 5
+	if player.Velocity > 0 {
+		player.Velocity -= constants.VELOCITY_PER_FRAME
 	}
 
-	p.PositionX += math.Cos(float64(p.Rotation)*(math.Pi/180)) * float64(p.Velocity) / 10
-	p.PositionY += math.Sin(float64(p.Rotation)*(math.Pi/180)) * float64(p.Velocity) / 10
+	player.PositionX += math.Cos(float64(player.Rotation)*(math.Pi/180)) * float64(player.Velocity) / 10
+	player.PositionY += math.Sin(float64(player.Rotation)*(math.Pi/180)) * float64(player.Velocity) / 10
 
 	w, h := ebiten.WindowSize()
-	if p.PositionX < 0 {
-		p.PositionX = 0
+	if player.PositionX < 0 {
+		player.PositionX = 0
 	}
-	if p.PositionX > float64(w) {
-		p.PositionX = float64(w)
+	if player.PositionX > float64(w) {
+		player.PositionX = float64(w)
 	}
-	if p.PositionY < 0 {
-		p.PositionY = 0
+	if player.PositionY < 0 {
+		player.PositionY = 0
 	}
-	if p.PositionY > float64(h) {
-		p.PositionY = float64(h)
+	if player.PositionY > float64(h) {
+		player.PositionY = float64(h)
 	}
 }

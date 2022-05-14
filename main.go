@@ -19,9 +19,9 @@ func main() {
 	ebiten.SetWindowSize(1280, 720)
 	ebiten.SetWindowResizable(true)
 
-	g := game.Game{World: world.NewWorld()}
+	game := game.Game{World: world.NewWorld()}
 
-	err := ebiten.RunGame(&g)
+	err := ebiten.RunGame(&game)
 	if err != nil {
 		log.Print(err)
 	}

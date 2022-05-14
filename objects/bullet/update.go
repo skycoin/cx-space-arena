@@ -4,14 +4,15 @@ import (
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/skycoin/cx-space-arena/constants"
 )
 
-func (b *Bullet) Update() bool {
+func (bullet *Bullet) Update() bool {
 	w, h := ebiten.WindowSize()
-	if b.Lifespan == 0 || b.PositionX < 0-25 || b.PositionY < 0-25 || b.PositionX > float64(w)+25 || b.PositionY > float64(h)+25 {
+	if bullet.Lifespan == 0 || bullet.PositionX < 0-constants.BULLET_HITBOX_OFFSET || bullet.PositionY < 0-constants.BULLET_HITBOX_OFFSET || bullet.PositionX > float64(w)+constants.BULLET_HITBOX_OFFSET || bullet.PositionY > float64(h)+constants.BULLET_HITBOX_OFFSET {
 		return false
 	}
-	b.PositionX += math.Cos(float64(b.Angle)*(math.Pi/180)) * 10
-	b.PositionY += math.Sin(float64(b.Angle)*(math.Pi/180)) * 10
+	bullet.PositionX += math.Cos(float64(bullet.Angle)*(math.Pi/180)) * 10
+	bullet.PositionY += math.Sin(float64(bullet.Angle)*(math.Pi/180)) * 10
 	return true
 }
